@@ -1,39 +1,66 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
+import { LoaderScreen, Colors } from 'react-native-ui-lib';
 import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { loadDarkMode } from '@/data/storage';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+export default function Layout() {
+    const [fontsLoaded] = useFonts({
+        'WixMadeforText': require('../assets/fonts/WixMadeforText-VariableFont_wght.ttf'),
+        'WixMadeforTextItalic': require('../assets/fonts/WixMadeforText-Italic-VariableFont_wght.ttf'),
+    });
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+    useEffect(() => {
+        const initializeDarkMode = async () => {
+            const isDarkMode = await loadDarkMode();
+            Colors.setScheme(isDarkMode ? 'dark' : 'light');
+        };
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+        void initializeDarkMode();
+    }, []);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+    if (!fontsLoaded) {
+        return <LoaderScreen color={Colors.$textPrimary} />;
     }
-  }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    return (
+        <Stack>
+            <Stack.Screen
+                name="index"
+                options={{
+                    title: '3D Peek',
+                    headerTitleAlign: 'left',
+                    headerTitleStyle: {
+                        fontSize: 24,
+                        fontWeight: 'bold',
+                        fontFamily: 'WixMadeforText',
+                        color: Colors.$textPrimary,
+                    },
+                    headerStyle: {
+                        backgroundColor: Colors.$backgroundDefault,
+                    },
+                    statusBarBackgroundColor: Colors.$backgroundGeneralHeavy,
+                    headerShadowVisible: false,
+                }}
+            />
+            <Stack.Screen
+                name="view"
+                options={{
+                    title: 'Visualização',
+                    headerTitleAlign: 'left',
+                    headerBackTitle: 'Voltar',
+                    headerTitleStyle: {
+                        fontSize: 24,
+                        fontWeight: 'bold',
+                        fontFamily: 'WixMadeforText',
+                        color: Colors.$textPrimary,
+                    },
+                    headerStyle: {
+                        backgroundColor: Colors.$backgroundDefault,
+                    },
+                    statusBarBackgroundColor: Colors.$backgroundGeneralHeavy,
+                }}
+            />
+        </Stack>
+    );
 }

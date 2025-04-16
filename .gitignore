@@ -20,6 +20,21 @@ expo-env.d.ts
 # Metro
 .metro-health-check*
 
+# Android/IntelliJ
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+.cxx/
+*.keystore
+!debug.keystore
+
+# node.js
+npm-debug.log
+yarn-error.log
+
 # debug
 npm-debug.*
 yarn-debug.*
