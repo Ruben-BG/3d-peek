@@ -1,52 +1,30 @@
-# Welcome to your Expo app 👋
+# 3D Peek
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**3D Peek** é um aplicativo mobile criado com **React Native** e **Expo Go**, desenvolvido para permitir a **visualização rápida de modelos 3D** diretamente da memória do celular.  
+O app é ideal para profissionais e hobbystas que precisam validar ideias e projetos sem a necessidade de softwares pesados ou notebooks.
 
-## Get started
+## Funcionalidades
 
-1. Install dependencies
+- 📂 Suporte a arquivos `.glt` e `.gltf`
+- 🎯 Visualização rápida de modelos 3D simples, sem necessidade de salvar os arquivos no aplicativo
+- 📱 Interface leve e focada em praticidade
 
-   ```bash
-   npm install
-   ```
+## Limitações atuais
 
-2. Start the app
+- 🎨 As texturas ainda **não são renderizadas corretamente**.
+- 🐞 Pequeno bug gráfico ao alternar para **modo escuro**.
+- 📁 Apenas arquivos `.glt` e `.gltf` são suportados no momento.
 
-   ```bash
-    npx expo start
-   ```
+Essas limitações já estão mapeadas e serão corrigidas em atualizações futuras.
 
-In the output, you'll find options to open the app in a
+## Instalação
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Para instalar o app em seu dispositivo Android, baixe o APK mais recente aqui:  
+[<img alt="Get it on GitHub" height="90" src="https://i.ibb.co/q0mdc4Z/get-it-on-github.png">](https://github.com/Ruben-BG/3d-peek/releases)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Tecnologias utilizadas
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# 3d-peek
-Aplicativo feito em React Native e Expo para visualizar rapidamente arquivos 3D (.glt e .gltf) armazenados no celular. Ideal para visualizar modelos simples de forma prática.
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- [Three.js](https://threejs.org/) (via expo-three para renderização 3D)
+- [RNUI](https://wix.github.io/react-native-ui-lib/)
